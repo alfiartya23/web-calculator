@@ -1,0 +1,72 @@
+/* Root */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+
+  /* Properti Pendukung */
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.flex-container-row {
+  display: flex;
+}
+
+.button {
+  flex-basis: 25%;
+
+  /* Properti Pendukung */
+  font-size: 1.5em;
+  text-align: center;
+  padding: 40px;
+  border: 1px solid black;
+
+  background: -webkit-linear-gradient(top, #d2d2d2, #ddd);
+  cursor: pointer;
+
+  /* background-color: blue; */
+}
+
+.button:hover {
+  font-weight: bold;
+}
+
+/* Button Color */
+.operator,
+.negative,
+.equals {
+  background: #ff9335;
+}
+
+/* Equal button */
+.double {
+  flex-basis: 50%;
+}
+
+/* Display Screen */
+.display {
+  color: white;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #373737;
+  border: 1px solid black;
+  font-size: 2em;
+  border-radius: 8px;
+}
+
+/* Card */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(251, 41, 41, 0.2);
+  border-radius: 5px;
+  padding: 30px;
+  margin-top: 20px;
+}
