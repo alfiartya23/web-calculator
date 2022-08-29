@@ -60,7 +60,6 @@ body {
   background-color: #373737;
   border: 1px solid black;
   font-size: 2em;
-  border-radius: 8px;
 }
 
 /* Card */
@@ -69,4 +68,11 @@ body {
   border-radius: 5px;
   padding: 30px;
   margin-top: 20px;
+}
+
+/* Media Query */
+@media screen and (max-width: 513px) {
+  .button {
+    padding: 10px;
+  }
 }
