@@ -30,14 +30,84 @@ function inputDigit(digit) {
   }
 }
 
+// Operator Function
+function handleOperator(operator) {
+  if (!calculator.isWaitForSecondNumber) {
+    calculator.operator = operator;
+    calculator.isWaitForSecondNumber = true;
+    calculator.firstNumber = calculator.displayNumber;
+
+    // reassign display number value, so for the next number starts from the begining
+    calculator.displayNumber = "0";
+
+    console.log(calculator.operator);
+  } else {
+    alert("You have assign the operator!");
+  }
+}
+
+// Inverese Number Function, make any number into negative
+function inverseNumber() {
+  // when the number is 0, the inverse calculation will not work
+  if (calculator.displayNumber === "0") {
+    return;
+  }
+  calculator.displayNumber = calculator.displayNumber * -1;
+}
+
+// Perform calculation to get the result
+function performCalculation() {
+  if (calculator.firstNumber === null || calculator.operator === null) {
+    alert("You haven't assign any operator!");
+    return;
+  }
+
+  let result = 0;
+  if (calculator.operator === "+") {
+    result = parseInt(calculator.firstNumber) + parseInt(calculator.displayNumber);
+  } else {
+    result = parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
+  }
+
+  console.log(result);
+  calculator.displayNumber = result;
+}
+
 // Add event for all the button and display it to the display screen
 const buttons = document.querySelectorAll(".button");
 
-// Loop to add the event
+// Loop to add the event for each button
 for (const button of buttons) {
   button.addEventListener("click", function (event) {
     // target to each element
     const target = event.target;
+
+    // Implement the clear button
+    if (target.classList.contains("clear")) {
+      clearCalculator();
+      updateDisplay();
+      return;
+    }
+
+    // Implament the inverse operation
+    if (target.classList.contains("negative")) {
+      inverseNumber();
+      updateDisplay();
+      return;
+    }
+
+    // Implement the equal operation
+    if (target.classList.contains("equals")) {
+      performCalculation();
+      updateDisplay();
+      return;
+    }
+
+    // Implement the handle operator "+" "-"
+    if (target.classList.contains("operator")) {
+      handleOperator(target.innerText);
+      return;
+    }
 
     inputDigit(target.innerText);
     updateDisplay();
