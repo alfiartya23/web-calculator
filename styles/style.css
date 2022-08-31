@@ -74,7 +74,7 @@ body {
 .history {
   width: 80%;
   margin: 30px auto 0 auto;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* Table */

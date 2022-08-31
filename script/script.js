@@ -39,8 +39,6 @@ function handleOperator(operator) {
 
     // reassign display number value, so for the next number starts from the begining
     calculator.displayNumber = "0";
-
-    console.log(calculator.operator);
   } else {
     alert("You have assign the operator!");
   }
@@ -57,7 +55,7 @@ function inverseNumber() {
 
 // Perform calculation to get the result
 function performCalculation() {
-  if (calculator.firstNumber === null || calculator.operator === null) {
+  if (calculator.firstNumber == null || calculator.operator == null) {
     alert("You haven't assign any operator!");
     return;
   }
@@ -69,15 +67,24 @@ function performCalculation() {
     result = parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
   }
 
-  console.log(result);
+  // Object that will use as an argument in putHistory()
+  const history = {
+    firstNumber: calculator.firstNumber,
+    secondNumber: calculator.displayNumber,
+    operator: calculator.operator,
+    result: result,
+  };
+
+  putHistory(history);
   calculator.displayNumber = result;
+  renderHistory();
 }
 
 // Add event for all the button and display it to the display screen
 const buttons = document.querySelectorAll(".button");
 
 // Loop to add the event for each button
-for (const button of buttons) {
+for (let button of buttons) {
   button.addEventListener("click", function (event) {
     // target to each element
     const target = event.target;
