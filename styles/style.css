@@ -72,9 +72,9 @@ body {
 
 /* Calculation History */
 .history {
-  width: 80%;
+  width: 40%;
   margin: 30px auto 0 auto;
-  overflow-y: scroll;
+  overflow: scroll;
 }
 
 /* Table */

@@ -56,7 +56,7 @@ function inverseNumber() {
 // Perform calculation to get the result
 function performCalculation() {
   if (calculator.firstNumber == null || calculator.operator == null) {
-    alert("You haven't assign any operator!");
+    alert("Anda belum menetapkan operator");
     return;
   }
 
@@ -74,7 +74,6 @@ function performCalculation() {
     operator: calculator.operator,
     result: result,
   };
-
   putHistory(history);
   calculator.displayNumber = result;
   renderHistory();

@@ -7,6 +7,8 @@ function checkForStorage() {
   return typeof Storage !== "undefined";
 }
 
+// Function to store data calculation history in Local Storage
+// data on this parameter is from the calculation that will send to localStorage
 function putHistory(data) {
   if (checkForStorage()) {
     let historyData = null;
@@ -17,6 +19,7 @@ function putHistory(data) {
     }
 
     historyData.unshift(data);
+
     if (historyData.length > 5) {
       historyData.pop();
     }
@@ -25,11 +28,12 @@ function putHistory(data) {
   }
 }
 
-// Get data from Local Storage
-// This function returns array from Local Storage if the value is available with JSON.parse()
+// Get data from localStorage
+// This function returns array from localStorage if the value is available with JSON.parse()
+// If it's not, then return an empty array
 function showHistory() {
   if (checkForStorage()) {
-    return JSON.parse(localStorage.getItem(CACHE_KEY) || []);
+    return JSON.parse(localStorage.getItem(CACHE_KEY)) || [];
   } else {
     return [];
   }
@@ -44,7 +48,7 @@ function renderHistory() {
   historyList.innerHTML = "";
 
   for (let history of historyData) {
-    let row = document.createComment("tr");
+    let row = document.createElement("tr");
     row.innerHTML = "<td>" + history.firstNumber + "</td>";
     row.innerHTML += "<td>" + history.operator + "</td>";
     row.innerHTML += "<td>" + history.secondNumber + "</td>";
